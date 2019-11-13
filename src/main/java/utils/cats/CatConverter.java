@@ -5,6 +5,11 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.bson.Document;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static business_objects.cat.CatProperties.*;
+
 public class CatConverter {
 
     public static Cat readFromJson(JsonObject object) {
@@ -15,11 +20,27 @@ public class CatConverter {
         return new Gson().toJson(cat);
     }
 
+    public static Document convertToBsonDocument(String jsonString) {
+        return Document.parse(jsonString);
+    }
+
     public static Document convertToBsonDocument(Cat cat) {
         Document document = new Document();
-        document.append("color", cat.getColor())
-                .append("age", cat.getAge())
-                .append("name", cat.getName());
+        document.append(COLOR.getValue(), cat.getColor())
+                .append(AGE.getValue(), cat.getAge())
+                .append(NAME.getValue(), cat.getName());
         return document;
+    }
+
+    public static List<Document> convertToBsonDocuments(List<Cat> cats) {
+        List<Document> documents = new ArrayList<>();
+        cats.forEach(cat ->
+                documents.add(convertToBsonDocument(cat))
+        );
+        return documents;
+    }
+
+    public static String convertToJsonString(List<Cat> cats) {
+        return new Gson().toJson(cats);
     }
 }

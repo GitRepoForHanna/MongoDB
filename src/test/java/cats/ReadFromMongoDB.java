@@ -10,10 +10,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.cats.CatConverter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static utils.cats.filters.CatFilters.*;
+import static utils.cats.filters.CatFilters.getAgeFilter;
+import static utils.cats.filters.CatFilters.getNameFilter;
 
 
 public class ReadFromMongoDB extends BaseTest{
@@ -24,7 +22,6 @@ public class ReadFromMongoDB extends BaseTest{
         Collection collection = new Collection(DataBaseContext.getCollection("cats"));
         Bson filter = Filter.getComplexFilter(getAgeFilter(3), getNameFilter("Druzhok"));
         JsonObject result = collection.readDocument(Filters.and(filter));
-        Assert.assertEquals(result.size(), 1);
         String actualName = CatConverter.readFromJson(result).getName();
         Assert.assertEquals(actualName, expectedName);
     }

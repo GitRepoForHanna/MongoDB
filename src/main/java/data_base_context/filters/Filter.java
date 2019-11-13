@@ -11,10 +11,10 @@ import java.util.stream.Stream;
 
 public class Filter {
 
-    public static List<Bson> getComplexFilter(Map<String, Object> filtersMap) {
+    public static Bson getComplexFilter(Map<String, Object> filtersMap) {
         List<Bson> filters = new ArrayList<>();
         filtersMap.forEach((key, value) -> filters.add(Filters.eq(key, value)));
-        return filters;
+        return Filters.and(filters);
     }
 
     public static Bson getEqualsFilter(String fieldName, String value) {

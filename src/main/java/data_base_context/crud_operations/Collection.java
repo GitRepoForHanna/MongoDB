@@ -4,12 +4,15 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
+import org.apache.log4j.Logger;
+import org.bson.BsonInvalidOperationException;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("unchecked")
 public class Collection {
 
     private MongoCollection collection;
@@ -23,7 +26,9 @@ public class Collection {
     }
 
     public void insertDocuments(List<Document> documents) {
-        collection.insertMany(documents);
+        if(null != collection) {
+            collection.insertMany(documents);
+        }
     }
 
     public List<JsonObject> readDocuments(Bson filters) {
@@ -37,9 +42,12 @@ public class Collection {
     }
 
     public JsonObject readDocument(Bson filters) {
-        // TODO: 11/12/2019  test that we got only 1 element
-        Object object =  collection.find(filters).first();
-        return new Gson().toJsonTree(object).getAsJsonObject();
+        if(collection.countDocuments(filters) == 1) {
+            Object object = collection.find(filters).first();
+            return new Gson().toJsonTree(object).getAsJsonObject();
+        }else {
+            throw new RuntimeException("It is expected to find only 1 document, but there are more ");
+        }
     }
 
     public void updateDocument(Bson filter, Bson newDocument) {
@@ -58,5 +66,11 @@ public class Collection {
 
     public void deleteDocuments(Bson filter) {
         collection.deleteMany(filter);
+    }
+
+    public void replaceDocument(Bson filter, Collection newCollection) {
+        Document document = (Document) collection.find(filter).first();
+        newCollection.insertDocument(document);
+        deleteDocument(filter);
     }
 }

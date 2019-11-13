@@ -26,10 +26,10 @@ public class DeleteDocument {
 //    }
 
     @Test
-    public void testDocumentDeleting() {
+    public void testManyDocumentsDeleting() {
         Collection collection = new Collection(DataBaseContext.getCollection("cats"));
-        Bson filter = Filter.getComplexFilter(getColorFilter("Green"), getNameFilter("Apple"));
-        collection.deleteDocument(Filters.and(filter));
+        Bson filter = Filter.getComplexFilter(getColorFilter("Red"), getNameFilter("Rizhik"));
+        collection.deleteDocuments(Filters.and(filter));
         List<JsonObject> result = collection.readDocuments(Filters.and(filter));
         Assert.assertEquals(result.size(), 0);
     }
