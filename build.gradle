@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+}
+
+group 'MongoDBProject'
+version '1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+ext{
+    mongoDBVersion = "3.11.2"
+    log4JVersion="1.2.17"
+    gsonVersion="2.8.6"
+    testNGVersion="6.14.3"
+    googleGuiceVersion="4.1.0"
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver
+    compile(
+            [group: 'org.mongodb', name: 'mongo-java-driver', version: "$mongoDBVersion"],
+            [group: "log4j", name: "log4j", version: "$log4JVersion"],
+            [group: 'com.google.code.gson', name: 'gson', version: "$gsonVersion"],
+            [group: 'org.testng', name: 'testng', version: "$testNGVersion"],
+            [group: 'com.google.inject', name: 'guice', version: "$googleGuiceVersion"]
+             )
+}
+
+test {
+    useTestNG() {
+
+    }
+    testLogging {
+        events "PASSED", "SKIPPED", "FAILED"
+        exceptionFormat "full"
+    }
+}
