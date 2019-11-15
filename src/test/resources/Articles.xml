@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite thread-count="1" verbose="10" name="ArticlesSuite" annotations="JDK" parallel="tests">
+    <test name="Articles">
+        <classes>
+<!--            <class name="tests.articles.TestNewsArticles"/>-->
+            <class name="tests.articles.FillingTheGaps"/>
+<!--            <class name="tests.articles.TestDocs"/>-->
+        </classes>
+    </test>
+</suite>

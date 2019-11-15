@@ -1,0 +1,23 @@
+[
+  {
+    "_id": "1",
+    "storage_id": "docs_1",
+    "author": {
+      "storage_id": "auth_1"
+    }
+  },
+  {
+    "_id": "2",
+    "storage_id": "docs_2",
+    "author": {
+      "storage_id": "auth_2"
+    }
+  },
+  {
+    "_id": "3",
+    "storage_id": "docs_3",
+    "author": {
+      "storage_id": "auth_3"
+    }
+  }
+]

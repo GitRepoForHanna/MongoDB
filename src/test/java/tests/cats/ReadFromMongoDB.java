@@ -1,4 +1,4 @@
-package cats;
+package tests.cats;
 
 import com.google.gson.JsonObject;
 import com.mongodb.client.model.Filters;
@@ -19,9 +19,9 @@ public class ReadFromMongoDB extends BaseTest{
     @Test
     public void testReadingFromDB() {
         String expectedName = "Druzhok";
-        Collection collection = new Collection(DataBaseContext.getCollection("cats"));
+        Collection collection = new Collection(DataBaseContext.getCollection("kittens", "tests/cats"));
         Bson filter = Filter.getComplexFilter(getAgeFilter(3), getNameFilter("Druzhok"));
-        JsonObject result = collection.readDocument(Filters.and(filter));
+        JsonObject result = collection.readObject(Filters.and(filter));
         String actualName = CatConverter.readFromJson(result).getName();
         Assert.assertEquals(actualName, expectedName);
     }

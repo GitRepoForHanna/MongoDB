@@ -1,0 +1,56 @@
+[
+  {
+    "_id": 17,
+    "name": "John Petters",
+    "age": 39,
+    "facebook": {
+      "link": "https://www.facebook.com/?id=254855175"
+    },
+    "copyright": "Petters Inc.",
+    "articles": [
+      "https://www.gocit.vn/files/MongoDB-Developers-www.gocit.vn.pdf",
+      "https://www.guru99.com/create-read-update-operations-mongodb.html",
+      "https://medium.com/@bretcameron/mongodb-a-beginners-guide-8fca0c7787a4"
+    ]
+  },
+  {
+    "_id": 16,
+    "name": "Jonathan Parker",
+    "age": 29,
+    "facebook": {
+      "link": "https://www.facebook.com/?id=19667814"
+    },
+    "copyright": "Parker and Co.",
+    "articles": [
+      "https://centerforworldmusic.org/2016/02/world-music-instrument-the-tin-whistle/"
+    ]
+  },
+  {
+    "_id": 15,
+    "name": "Paul Krill",
+    "age": 37,
+    "facebook": {
+      "link": "https://www.facebook.com/?id=25782967"
+    },
+    "copyright": "Java world Inc.",
+    "articles": [
+      "https://www.javaworld.com/article/3449863/google-app-engine-adds-support-for-java-11.html",
+      "https://www.infoworld.com/article/3453440/github-unveils-native-ios-and-android-clients.html",
+      "https://www.infoworld.com/article/3453236/pulumi-infrastructure-as-code-tool-adds-net-language-support.html"
+    ]
+  },
+  {
+    "_id": 13,
+    "name": "Philip Kiely",
+    "age": 22,
+    "facebook": {
+      "link": "https://www.facebook.com/philip.kiely.9"
+    },
+    "copyright": "Smash magazine Inc.",
+    "articles": [
+      "https://www.smashingmagazine.com/2019/11/adapting-agile-part-time-teams/",
+      "https://www.smashingmagazine.com/2019/08/text-to-speech-aws/",
+      "https://www.smashingmagazine.com/2019/10/text-to-speech-aws-part-2/"
+    ]
+  }
+]

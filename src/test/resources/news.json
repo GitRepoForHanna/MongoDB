@@ -1,0 +1,104 @@
+[{
+  "_id" : 5526185,
+  "header" : "MongoDB - tricks for developers",
+  "author" : {
+				"_id" : 17,
+	  			"storage_id" : "authors_17",
+				"name" : "John Petters",
+				"age":39,
+				"facebook" : {
+								"link" : "https://www.facebook.com/?id=254855175"
+				},
+				"copyright" : "Petters Inc."
+				},
+	"tags" : [
+			"data base",
+			"programming",
+			"software development",
+			"it"
+			],
+	"body" : "Once you have a MongoClient instance connected to a MongoDB deployment, use the MongoClient.getDatabase() method to access a database. Specify the name of the database to the getDatabase() method. If a database does not exist, MongoDB creates the database when you first store data for that database."
+},
+{
+  "_id" : 88135,
+  "header" : "World Music Instrument: The Tin Whistle",
+  "author" : {
+				"_id" : 16,
+	  			"storage_id" : "authors_16",
+				"name" : "Jonathan Parker",
+				"age":29,
+				"facebook" : {
+								"link" : "https://www.facebook.com/?id=19667814"
+				},
+				"copyright" : "Parker and Co."
+				},
+	"tags" : [
+			"folk",
+			"instruments",
+			"flute",
+			"music",
+			"music tool"
+			],
+	"body" : "Players of the tin whistle range from the 17th Century English diarist Samuel Pepys, who wrote of his delight in playing the “flagilette,” to the great modern Irish flautist James Galway"
+},
+{
+  "_id" : 7812,
+  "header" : "Google App Engine adds support for Java 11",
+  "author" : {
+				"_id" : 15,
+	  			"storage_id" : "authors_15",
+				"name" : "Paul Krill",
+				"age":37,
+				"facebook" : {
+								"link" : "https://www.facebook.com/?id=25782967"
+				},
+				"copyright" : "Java world Inc."
+				},
+	"tags" : [
+			"java",
+			"software development",
+			"programming languages",
+			"programming",
+			"technologies"
+			],
+	"body" : "Google’s App Engine cloud has added official support for Java 11, the latest long-term support (LTS) version of the Java language platform, as a production release. "
+},
+{
+  "_id" : 781214,
+  "header" : "Adapting Agile For Part-Time Teams",
+  "author" : {
+				"_id" : 13,
+	  			"storage_id" : "authors_13",
+				"name" : "Philip Kiely",
+				"age":22,
+				"facebook" : {
+								"link" : "https://www.facebook.com/?id=14396565"
+				},
+				"copyright" : "Smash magazine Inc."
+				},
+	"tags" : [
+			"agile",
+			"software development",
+			"technologies",
+			"programming",
+			"it"
+			],
+	"body" : "In this article, we’ll consider applying Agile to a team of 5-10 people each working 20 hours per week on a project. "
+},
+	{
+		"_id" : 1111,
+		"header" : "How To Use GraphLookup In Mongodb",
+		"author" : {
+			"_id" : 13,
+			"storage_id" : "authors_13"
+		},
+		"tags" : [
+			"agile",
+			"software development",
+			"technologies",
+			"programming",
+			"it"
+		],
+		"body" : "In this article, we’ll consider applying Agile to a team of 5-10 people each working 20 hours per week on a project. "
+	}
+]

@@ -1,4 +1,4 @@
-package cats;
+package tests.cats;
 
 import com.google.gson.JsonObject;
 import com.mongodb.client.model.Filters;
@@ -27,10 +27,10 @@ public class DeleteDocument {
 
     @Test
     public void testManyDocumentsDeleting() {
-        Collection collection = new Collection(DataBaseContext.getCollection("cats"));
+        Collection collection = new Collection(DataBaseContext.getCollection("kittens", "tests/cats"));
         Bson filter = Filter.getComplexFilter(getColorFilter("Red"), getNameFilter("Rizhik"));
         collection.deleteDocuments(Filters.and(filter));
-        List<JsonObject> result = collection.readDocuments(Filters.and(filter));
+        List<JsonObject> result = collection.readObjects(Filters.and(filter));
         Assert.assertEquals(result.size(), 0);
     }
 }

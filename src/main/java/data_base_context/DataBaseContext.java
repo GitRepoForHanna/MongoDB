@@ -24,32 +24,39 @@ public class DataBaseContext {
         return client;
     }
 
-    private static void initDataBase() {
-        database = getClient().getDatabase(DATA_BASE_NAME);
+    private static void initDataBase(String dataBase) {
+        database = getClient().getDatabase(dataBase);
     }
 
-    private static MongoDatabase getDataBase() {
+    private static MongoDatabase getDataBase(String dataBase) {
         if (null == database) {
-            initDataBase();
+            initDataBase(dataBase);
         }
         return database;
     }
 
-    public static MongoCollection getCollection(String collection, boolean createIfNotExists) {
+    public static MongoCollection getCollection(String dataBase, String collection, boolean createIfNotExists) {
         boolean isCollectionExists = false;
-        for (String name : getDataBase().listCollectionNames()) {
+        for (String name : getDataBase(dataBase).listCollectionNames()) {
             if (name.equals(collection)) {
                 isCollectionExists = true;
                 break;
             }
         }
         if (createIfNotExists) {
-            return getDataBase().getCollection(collection);
+            return getDataBase(dataBase).getCollection(collection);
         }
-        return isCollectionExists ? getDataBase().getCollection(collection) : null;
+        return isCollectionExists ? getDataBase(dataBase).getCollection(collection) : null;
     }
 
-    public static MongoCollection getCollection(String collection) {
-        return getCollection(collection, true);
+    public static MongoCollection getCollection(String dataBaseName, String collection) {
+        return getCollection(dataBaseName, collection, true);
+    }
+
+    public static void dropCollection(String dataBase, String collection) {
+        MongoCollection mongoCollection = getCollection(dataBase, collection, false);
+        if(null != mongoCollection){
+            mongoCollection.drop();
+        }
     }
 }

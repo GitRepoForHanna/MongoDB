@@ -4,8 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
-import org.apache.log4j.Logger;
-import org.bson.BsonInvalidOperationException;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
@@ -26,12 +24,12 @@ public class Collection {
     }
 
     public void insertDocuments(List<Document> documents) {
-        if(null != collection) {
+        if (null != collection) {
             collection.insertMany(documents);
         }
     }
 
-    public List<JsonObject> readDocuments(Bson filters) {
+    public List<JsonObject> readObjects(Bson filters) {
         MongoCursor cursor = collection.find(filters).cursor();
         List<JsonObject> result = new ArrayList<>();
         Gson converter = new Gson();
@@ -41,11 +39,27 @@ public class Collection {
         return result;
     }
 
-    public JsonObject readDocument(Bson filters) {
-        if(collection.countDocuments(filters) == 1) {
+    public List<Document> readAllDocuments() {
+        return (List<Document>) collection.find().into(new ArrayList<Document>());
+    }
+
+    public List<Document> readDocuments(Bson filters) {
+        return (List<Document>) collection.find(filters).into(new ArrayList<Document>());
+    }
+
+    public JsonObject readObject(Bson filters) {
+        if (collection.countDocuments(filters) == 1) {
             Object object = collection.find(filters).first();
             return new Gson().toJsonTree(object).getAsJsonObject();
-        }else {
+        } else {
+            throw new RuntimeException("It is expected to find only 1 document, but there are more ");
+        }
+    }
+
+    public Document readDocument(Bson filters) {
+        if (collection.countDocuments(filters) == 1) {
+            return (Document) collection.find(filters).first();
+        } else {
             throw new RuntimeException("It is expected to find only 1 document, but there are more ");
         }
     }
@@ -68,9 +82,7 @@ public class Collection {
         collection.deleteMany(filter);
     }
 
-    public void replaceDocument(Bson filter, Collection newCollection) {
-        Document document = (Document) collection.find(filter).first();
-        newCollection.insertDocument(document);
-        deleteDocument(filter);
+    public void drop() {
+        collection.drop();
     }
 }

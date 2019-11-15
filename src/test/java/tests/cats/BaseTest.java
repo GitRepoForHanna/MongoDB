@@ -1,4 +1,4 @@
-package cats;
+package tests.cats;
 
 import com.google.inject.Inject;
 import com.mongodb.client.MongoCollection;
